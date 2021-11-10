@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  django:
+    build:
+      context: .
+    restart: unless-stopped
+    container_name: news_django
+    image: django
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: unless-stopped
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+      - "443:443"
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+
+
+  postgres:
+    restart: unless-stopped
+    container_name: news_postgres
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data/
+    image: postgres:latest
+    env_file:
+      - .env

@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  django:
+    build:
+      context: .
+    restart: unless-stopped
+    container_name: news_django
+    volumes:
+      - ./static:/app/static
+      - ./media:/app/media
+    image: django
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+  postgres:
+    restart: unless-stopped
+    container_name: news_postgres
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data/
+    image: postgres:latest
+    env_file:
+      - .env
+    ports:
+      - 5432:5432
