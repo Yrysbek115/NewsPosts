@@ -2,6 +2,8 @@
 
 ## Getting Started
 
+### Note: api colection url is : https://github.com/Yrysbek666/NewsPosts/blob/main/TestNewsApi.postman_collection.json
+
 ### Prerequisites
 
 - python3.9
