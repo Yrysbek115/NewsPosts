@@ -98,7 +98,7 @@ class CommentDetailsView(APIView):
                 status=status.HTTP_406_NOT_ACCEPTABLE
             )
         comment = CommentServices.update(comment=post_comment, **serializer.validated_data)
-        data = PostSerializer(comment).data
+        data = CommentSerializer(comment).data
         return Response(data=data, status=status.HTTP_200_OK)
 
     def delete(self, request, pk):
