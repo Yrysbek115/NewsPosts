@@ -20,7 +20,7 @@
 | DEBUG                 | true                 | Flag that turns on debug mode. `true` or `false`   |
 | DJANGO_SETTINGS_MODULE| project.settings.base| Name of the settings module                        |
 | ALLOWED_HOSTS         | *                    | List of allowed hosts, separated by comma(,)       |
-| POSTGRES_DB           | qrcode             | PostgresQL Database Name                           |
+| POSTGRES_DB           | newsTest             | PostgresQL Database Name                           |
 | POSTGRES_PASSWORD     | postgres             | PostgresQL  User's password                        |
 | POSTGRES_USER         | postgres             | PostgresQL  User's username                        |
 | POSTGRES_HOST         | postgres             | Name of the host                                   |
@@ -101,7 +101,7 @@ python manage.py migrate
 ### If you are using docker to start the server, then you need to execute these commands
 
 ```
-docker exec -it qrcode_django sh
+docker exec -it news_django sh
 ```
 
 inside docker terminal
