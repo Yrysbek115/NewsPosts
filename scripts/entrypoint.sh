@@ -21,5 +21,5 @@ else
     python manage.py collectstatic --settings ${DJANGO_SETTINGS_MODULE} --noinput
 
     echo "Running gunicorn"
-    gunicorn project.wsgi:application --bind 0.0.0.0:5000 --workers=3
+    gunicorn news.wsgi:application --bind 0.0.0.0:5000 --workers=3
 fi

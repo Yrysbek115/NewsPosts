@@ -11,19 +11,8 @@ services:
       - postgres
     env_file:
       - .env
-
-  nginx:
-    image: nginx:latest
-    container_name: nginx
-    restart: unless-stopped
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/conf.d:/etc/nginx/conf.d
     ports:
-      - "80:80"
-      - "443:443"
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-
+      - 5000:5000
 
   postgres:
     restart: unless-stopped
